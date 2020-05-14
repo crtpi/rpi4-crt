@@ -36,7 +36,7 @@ class MyHandler(FileSystemEventHandler):
                     mode = open(state_path + state_file).read().strip()
                     print(f"Setting desired display mode: '{mode}' ...")
                     time.sleep(2)
-                    p0 = Popen("%s" % (mode) , shell=True, stdout=PIPE, stderr=PIPE)
+                    p0 = Popen("tvservice -c '%s'" % (mode) , shell=True, stdout=PIPE, stderr=PIPE)
                     out, err = p0.communicate()
 
                     if p0.returncode == 0:
